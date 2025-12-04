@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>clasificacion de emails spam</title>
+    <style>
+        body{
+            margin-top: 10%;
+            font-family: sans-serif;
+        }
+        h1{
+            text-align: center;
+            color:rgb(83, 83, 83)
+        }
+        form{
+            text-align: center;
+            
+        }
+        textarea{
+            border-radius: 10px;
+            display: block;
+            border-color: rgb(255, 169, 41);
+            width: 100%;
+            max-width: 60%;
+            margin: 0 auto;
+        }
+        button{
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: rgb(48, 48, 167);
+            color:#fff;
+           width: 20%;     
+          padding: 0.5rem 1rem; 
+          display: inline-block; 
+          margin-top: 5%;
+        }
+        h2{
+            text-align: center;
+            color: #353535;
+            margin-top: 5%;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <h1>CLASIFICADOR DE EMAIL SPAM</h1>
+
+    <div>
+        <form method="post" action="/predict">
+            <textarea rows="12" cols="60" name="content" placeholder="escribe o pega tu EMAIL"  autocomplete="off">{{email_text}}</textarea>
+            <div>
+                <button type="submit"> ENVIAR</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        {% if prediction %}
+        {% if prediction == 1 %}
+        <h2 style="color: red">Spam</h2>
+        {% else %}
+        <h2 style="color: green">No Spam</h2>
+        {% endif %}
+        {% endif %}
+        <!-- <p id="display"></p> -->
+    </div>
+    </div>
+</body>
+</html>
